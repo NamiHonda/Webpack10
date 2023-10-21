@@ -1,5 +1,7 @@
 //絶対パスで表示させるため、このファイルまでの絶対パスを出力
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackplugin = require('html-webpack-plugin');
 
 module.exports = {
   //エントリーポイントを登録
@@ -16,7 +18,7 @@ module.exports = {
         test: /\.css/,
         use: [
           {
-            loader: 'style-loader',
+            loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader'
@@ -24,5 +26,11 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackplugin({
+      template: './src/index.html',
+    }),
+  ] 
 }
