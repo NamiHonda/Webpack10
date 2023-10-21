@@ -2,15 +2,16 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackplugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   //エントリーポイントを登録
   //読み込むファイル名
-  entry: './src/index.js',
+  entry: './src/javascripts/main.js',
   //出力先
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'main.js'
+    filename: 'javascripts/main.js'
   },
   module: {
     rules: [
@@ -28,9 +29,12 @@ module.exports = {
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackplugin({
-      template: './src/index.html',
+    new MiniCssExtractPlugin({
+      filename: './stylesheets/main.css'
     }),
+    new HtmlWebpackplugin({
+      template: './src/templates/index.html',
+    }),
+    new CleanWebpackPlugin(),
   ] 
 }
