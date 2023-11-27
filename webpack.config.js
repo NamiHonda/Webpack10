@@ -11,7 +11,7 @@ module.exports = {
   entry: './src/javascripts/main.js',
   //出力先
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './htdocs'),
     filename: 'javascripts/main.js'
   },
   //modeの指定
